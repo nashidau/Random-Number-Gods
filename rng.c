@@ -1,7 +1,13 @@
 #include <stdint.h>
+#include <talloc.h>
 
 #include "rng.h"
 #include "rng-private.h"
+
+
+int rng_free(struct rng *rng){
+	return talloc_free(rng);
+}
 
 uint32_t
 default_dx(struct rng *rng, int x){
@@ -28,7 +34,7 @@ default_ndx(struct rng *rng, int n, int x){
 uint32_t
 default_range(struct rng *rng, int min, int max){
         int range = max - min;
-        return min + rolldX(range) - 1;
+        return min + rng->dx(rng, range) - 1;
 
 }
 

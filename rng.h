@@ -9,3 +9,5 @@ struct rng {
 	uint32_t (*range)(struct rng *, int min, int max);
 };
 
+int rng_free(struct rng *);
+
