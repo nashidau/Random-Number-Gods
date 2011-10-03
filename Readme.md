@@ -5,7 +5,7 @@ The Random Number Gods provides various random numbers to worthy supplicants.
 The pantheon of the Random Number Gods is strong, and flexible, and readily
 accepts new deities into it's ranks.
 
-The most revered and ancient books of the rngods is known as 'RNGOD 0.1'.
+The most revered and ancient books of the rngods is known as 'RNGOD 0.2'.
 
 Using the Random Number Gods
 ============================
