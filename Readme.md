@@ -60,3 +60,5 @@ hope to discover them.
  - The Book of Travels.  Detailing how the wisdom of the Random Number Gods
  can be used in your life.
  - The Trials of the Random Number Gods.  The tests the RNGods must traverse.
+ - Calling Down the Moon.  The followers of the Moon, (Lua as the portugese
+		 say) also would like to contact the Random Number Gods.
