@@ -40,4 +40,23 @@ other scriptures).
 The dethread deity however can handle all, and will take care to deliver the
 messages to and from another deity safely.  With the dethread deity relaying
 your prayers, you can be safe in the knowledge that the message will get there
-and back safely.  Never a Miscommunication
+and back safely.  Never a Miscommunication.
+
+
+Versions of the Scriptures
+==========================
+
+ - 0.1: Genesis; the coming of the LCG.
+ - 0.2: The Weaver: the coming of the dethread deity.
+
+The Great Beyond
+================
+
+There are more things in the heavens then spoken of in this text.  In time we
+hope to discover them. 
+ 
+ - The shared gods.  Also known as the great '.so'.
+ - The mersenne twister.  A great diety of vast power
+ - The Book of Travels.  Detailing how the wisdom of the Random Number Gods
+ can be used in your life.
+ - The Trials of the Random Number Gods.  The tests the RNGods must traverse.
