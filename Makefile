@@ -6,8 +6,9 @@ LDFLAGS:=`${PKGCONFIG} --libs ${PKGS}`
 
 ####
 
-OBJS=		\
-	rng.o	\
+OBJS=			\
+	rng.o		\
+	dethread.o	\
 	lcg.o
 
 .DEFAULT: rng.a
