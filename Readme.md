@@ -19,8 +19,9 @@ certain simplicities.  In ages past the LCG was known as Linear congruential
 generator, but most just know him by his shorter name in modern times.
 
 The true name of the LCG is best written as:
-'''C
-''' x = seed * A + C
+```C
+x = seed * A + C
+```
 
 It is said the true names for the A and C, are 1664525 & 1013904223, deriving
 from the ancient scriptures _Numerical Receipes in C_.
