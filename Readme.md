@@ -5,7 +5,7 @@ The Random Number Gods provides various random numbers to worthy supplicants.
 The pantheon of the Random Number Gods is strong, and flexible, and readily
 accepts new deities into it's ranks.
 
-The most revered and ancient books of the rngods is known as 'RNGOD 0.2'.
+The most revered and ancient books of the rngods is known as 'RNGOD 0.3'.
 
 Using the Random Number Gods
 ============================
@@ -42,12 +42,23 @@ messages to and from another deity safely.  With the dethread deity relaying
 your prayers, you can be safe in the knowledge that the message will get there
 and back safely.  Never a Miscommunication.
 
+The Constant God
+----------------
+
+There are those who wish to trial their deity, and demand that those they
+(supposedly) venerate are unwavering in their gifts.  Those that do will find
+the Constant god a great benefit.
+
+The constant god can be created in either a true (7) form, or alternatively
+created in the version of your choice.
+
 
 Versions of the Scriptures
 ==========================
 
  - 0.1: Genesis; the coming of the LCG.
  - 0.2: The Weaver: the coming of the dethread deity.
+ - 0.3: Law and Order: The coming of the static good
 
 The Great Beyond
 ================

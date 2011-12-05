@@ -42,6 +42,7 @@ default_range(struct rng *rng, int min, int max){
 int
 default_init(struct rng *rng){
 	if (!rng) return -1;
+	// FIXME: check range is defined?
 	rng->dx = default_dx;
 	rng->ndx = default_ndx;
 	rng->range = default_range;

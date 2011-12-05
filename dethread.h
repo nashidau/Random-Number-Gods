@@ -1,1 +1,1 @@
-struct rng *dethread_add(struct rng *rng);
+struct rng *rngod_dethread_add(struct rng *rng);
