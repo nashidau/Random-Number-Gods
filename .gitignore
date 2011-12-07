@@ -1,5 +1,6 @@
 .*.swp
-rng.a
+rngod.a
+librngod.so
 *.o
 check
 core
