@@ -3,7 +3,6 @@ rngod.a
 librngod.so
 *.o
 check
-core
 tags
 TAGS
 cscope.out
