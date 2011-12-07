@@ -32,8 +32,8 @@ TESTS=				\
 ${LIB}: ${OBJS} check
 	${CC} -shared -Wl,-soname,$@ ${CFLAGS} -o $@ ${OBJS}
 
-rng.a: ${OBJS}
-	ar rcs rng.a ${OBJS}
+rngod.a: ${OBJS}
+	ar rcs rngod.a ${OBJS}
 
 install: ${LIB} rngod.pc
 	mkdir -p /usr/local/include/rngod
@@ -44,11 +44,11 @@ install: ${LIB} rngod.pc
 	mkdir -p /usr/local/lib/pkgconfig
 	cp rngod.pc /usr/local/lib/pkgconfig
 
-check: rng.a ${TESTS}
-	${CC} ${CFLAGS} -o check ${TESTS} rng.a ${LDFLAGS} -lcheck
+check: rngod.a ${TESTS}
+	${CC} ${CFLAGS} -o check ${TESTS} rngod.a ${LDFLAGS} -lcheck
 	./check
 
 ${OBJS} : rng.h rng-private.h
 
 clean:
-	rm -f ${OBJS} ${LIB} rng.a check
+	rm -f ${OBJS} ${LIB} rngod.a check
