@@ -28,5 +28,7 @@ main(int argc, char **argv) {
                 printf("\e[0;31mFail\e[0;0m\n");
         else
                 printf("\e[0;32mPass\e[0;0m\n");
+
+	return !!nfail;
 }
 
