@@ -1,7 +1,7 @@
 PKGS="talloc"
 PKGCONFIG=pkg-config
 
-CFLAGS+=`${PKGCONFIG} --cflags ${PKGS}`
+CFLAGS+=`${PKGCONFIG} --cflags ${PKGS}` -fPIC
 LDFLAGS+=`${PKGCONFIG} --libs ${PKGS}`
 
 ####
@@ -25,9 +25,11 @@ TESTS=				\
 	constant_check.o	\
 	dethread_check.o
 
-.DEFAULT: rng.a ${LIB} check
+.DEFAULT: ${LIB} check
+.PHONY : clean
+.PRECIOUS: check
 
-${LIB}: ${OBJS}
+${LIB}: ${OBJS} check
 	${CC} -shared -Wl,-soname,$@ ${CFLAGS} -o $@ ${OBJS}
 
 rng.a: ${OBJS}
@@ -40,12 +42,13 @@ install: ${LIB} rngod.pc
 	cp librngod.so.0 /usr/local/lib/
 	ln -sf /usr/local/lib/librngod.so.0 /usr/local/lib/librngod.so
 	mkdir -p /usr/local/lib/pkgconfig
-	cp rng.pc /usr/local/lib/pkgconfig
+	cp rngod.pc /usr/local/lib/pkgconfig
 
 check: rng.a ${TESTS}
 	${CC} ${CFLAGS} -o check ${TESTS} rng.a ${LDFLAGS} -lcheck
+	./check
 
 ${OBJS} : rng.h rng-private.h
 
 clean:
-	rm ${OBJS} ${LIB} rng.a
+	rm -f ${OBJS} ${LIB} rng.a check
