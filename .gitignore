@@ -1,6 +1,6 @@
 .*.swp
 rngod.a
-librngod.so
+librngod.so*
 *.o
 check
 tags
