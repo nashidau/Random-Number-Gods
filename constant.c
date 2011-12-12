@@ -16,6 +16,7 @@ struct rng_constant {
 
 static uint32_t constant_rand(struct rngod *rng);
 static uint32_t constant_dx(struct rngod *rng, int x);
+static uint32_t constant_range(struct rngod *rng, int min, int max);
 
 struct rngod *
 rngod_constant_add_default(void){
@@ -32,6 +33,7 @@ rngod_constant_add(uint32_t value){
 	rngc->value = value;
 	rngc->rng.rand = constant_rand;
 	rngc->rng.dx = constant_dx;
+	rngc->rng.range = constant_range;
 	return (struct rngod *)rngc;
 }
 
@@ -49,4 +51,14 @@ constant_dx(struct rngod *rng, int x) {
 	return rngc->value;
 }
 
+static uint32_t
+constant_range(struct rngod *rng, int min, int max) {
+	struct rng_constant *rngc = (struct rng_constant *)rng;
+	if (rngc->value > max)
+		return max;
+	else if (rngc->value < min)
+		return min;
+	else
+		return rngc->value;
+}
 

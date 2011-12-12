@@ -26,6 +26,18 @@ START_TEST(test_constant_d10_returns_seven) {
 	ck_assert_int_eq(7, cnst->dx(cnst, 10));
 } END_TEST
 
+START_TEST(test_constant_range_returns_value) {
+	ck_assert_int_eq(7, cnst->range(cnst, 0, 10));
+} END_TEST
+
+START_TEST(test_constant_range_returns_min) {
+	ck_assert_int_eq(10, cnst->range(cnst, 10,  20));
+} END_TEST
+
+START_TEST(test_constant_range_returns_max) {
+	ck_assert_int_eq(5, cnst->range(cnst, 3, 5));
+} END_TEST
+
 int
 constant_check(Suite *s) {
         TCase *tc_cnst = tcase_create("RNG Constant");
@@ -35,6 +47,9 @@ constant_check(Suite *s) {
 
 	tcase_add_test(tc_cnst, test_constant_returns_seven);
 	tcase_add_test(tc_cnst, test_constant_d10_returns_seven);
+	tcase_add_test(tc_cnst, test_constant_range_returns_value);
+	tcase_add_test(tc_cnst, test_constant_range_returns_min);
+	tcase_add_test(tc_cnst, test_constant_range_returns_max);
 
 	return 0;
 }
