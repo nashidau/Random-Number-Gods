@@ -6,7 +6,7 @@
 
 #include "dethread.h"
 #include "constant.h"
-#include "rng.h"
+#include "rngod.h"
 
 int dethread_check(Suite *s);
 int constant_check(Suite *s);

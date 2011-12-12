@@ -6,13 +6,13 @@
 #include <talloc.h>
 
 #include "lcg.h"
-#include "rng.h"
+#include "rngod.h"
 #include "rng-private.h"
 
 /** Todo: Paramaterise the A & C values */
 
 struct rng_lcg {
-	struct rng rng;
+	struct rngod rng;
 	uint32_t seed;
 };
 
@@ -21,14 +21,14 @@ enum {
 	LCG_C = 1013904223,
 };
 
-static uint32_t lcg_rand(struct rng *rng);
+static uint32_t lcg_rand(struct rngod *rng);
 
-struct rng *
+struct rngod *
 lcg_add_default(void){
 	return lcg_add(time(NULL) ^ (getpid() << 1));
 }
 
-struct rng *
+struct rngod *
 lcg_add(uint32_t seed){
 	struct rng_lcg *rngl;
 
@@ -38,12 +38,12 @@ lcg_add(uint32_t seed){
 	rngl->seed = seed;
 	rngl->rng.rand = lcg_rand;
 	default_init(&rngl->rng);
-	return (struct rng *)rngl;
+	return (struct rngod *)rngl;
 }
 
 
 static uint32_t
-lcg_rand(struct rng *rng) {
+lcg_rand(struct rngod *rng) {
 	struct rng_lcg *rngl = (struct rng_lcg *)rng;
 
 	rngl->seed = ((uint64_t)rngl->seed * LCG_A + LCG_C);

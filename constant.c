@@ -5,24 +5,24 @@
 
 #include <talloc.h>
 
-#include "rng.h"
+#include "rngod.h"
 #include "rng-private.h"
 #include "constant.h"
 
 struct rng_constant {
-	struct rng rng;
+	struct rngod rng;
 	uint32_t value;
 };
 
-static uint32_t constant_rand(struct rng *rng);
-static uint32_t constant_dx(struct rng *rng, int x);
+static uint32_t constant_rand(struct rngod *rng);
+static uint32_t constant_dx(struct rngod *rng, int x);
 
-struct rng *
+struct rngod *
 rngod_constant_add_default(void){
 	return rngod_constant_add(7);
 }
 
-struct rng *
+struct rngod *
 rngod_constant_add(uint32_t value){
 	struct rng_constant *rngc;
 
@@ -32,18 +32,18 @@ rngod_constant_add(uint32_t value){
 	rngc->value = value;
 	rngc->rng.rand = constant_rand;
 	rngc->rng.dx = constant_dx;
-	return (struct rng *)rngc;
+	return (struct rngod *)rngc;
 }
 
 
 static uint32_t
-constant_rand(struct rng *rng) {
+constant_rand(struct rngod *rng) {
 	struct rng_constant *rngc = (struct rng_constant *)rng;
 	return rngc->value;
 }
 
 static uint32_t
-constant_dx(struct rng *rng, int x) {
+constant_dx(struct rngod *rng, int x) {
 	struct rng_constant *rngc = (struct rng_constant *)rng;
 	// FIXME: Ignores 'X'
 	return rngc->value;

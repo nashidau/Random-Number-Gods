@@ -7,12 +7,12 @@
 
 #include "dethread.h"
 #include "constant.h"
-#include "rng.h"
+#include "rngod.h"
 
-struct rng *dthrd;
+struct rngod *dthrd;
 
 static void dethread_init(void) {
-	struct rng *con;
+	struct rngod *con;
 
 	con = rngod_constant_add_default();
 	dthrd = rngod_dethread_add(con);

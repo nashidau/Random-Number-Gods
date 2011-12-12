@@ -2,6 +2,6 @@
 
 /* Stateless LCG implementation */
 
-struct rng *lcg_add(uint32_t seed);
-struct rng *lcg_add_default(void);
+struct rngod *lcg_add(uint32_t seed);
+struct rngod *lcg_add_default(void);
 

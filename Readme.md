@@ -5,7 +5,7 @@ The Random Number Gods provides various random numbers to worthy supplicants.
 The pantheon of the Random Number Gods is strong, and flexible, and readily
 accepts new deities into it's ranks.
 
-The most revered and ancient books of the rngods is known as 'RNGOD 0.3'.
+The most revered and ancient books of the rngods is known as 'RNGOD 0.4'.
 
 Using the Random Number Gods
 ============================
@@ -59,6 +59,7 @@ Versions of the Scriptures
  - 0.1: Genesis; the coming of the LCG.
  - 0.2: The Weaver: the coming of the dethread deity.
  - 0.3: Law and Order: The coming of the static good
+ - 0.4: The True Names: The RNGods, not the rng.
 
 The Great Beyond
 ================

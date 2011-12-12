@@ -3,22 +3,22 @@
 #include <talloc.h>
 
 #include "dethread.h"
-#include "rng.h"
+#include "rngod.h"
 #include "rng-private.h"
 
 struct rng_dethread {
-	struct rng rng;
+	struct rngod rng;
 	pthread_mutex_t lock;
-	struct rng *locked;
+	struct rngod *locked;
 };
 
-static uint32_t dethread_rand(struct rng*);
-static uint32_t dethread_dx(struct rng *, int x);
-static uint32_t dethread_ndx(struct rng *, int n, int x);
-static uint32_t dethread_range(struct rng *, int min, int max);
+static uint32_t dethread_rand(struct rngod*);
+static uint32_t dethread_dx(struct rngod *, int x);
+static uint32_t dethread_ndx(struct rngod *, int n, int x);
+static uint32_t dethread_range(struct rngod *, int min, int max);
 
-struct rng *
-rngod_dethread_add(struct rng *rng) {
+struct rngod *
+rngod_dethread_add(struct rngod *rng) {
 	struct rng_dethread *rngd;
 
 	rngd = talloc(NULL, struct rng_dethread);
@@ -33,12 +33,12 @@ rngod_dethread_add(struct rng *rng) {
 
 	pthread_mutex_init(&rngd->lock, NULL);
 
-	return (struct rng *)rngd;
+	return (struct rngod *)rngd;
 }
 
 
 static uint32_t
-dethread_rand(struct rng *rng){
+dethread_rand(struct rngod *rng){
 	uint32_t rv;
 	struct rng_dethread *rngd = (struct rng_dethread *)rng;
 	pthread_mutex_lock(&rngd->lock);
@@ -48,7 +48,7 @@ dethread_rand(struct rng *rng){
 }
 
 static uint32_t
-dethread_dx(struct rng *rng, int x){
+dethread_dx(struct rngod *rng, int x){
 	uint32_t rv;
 	struct rng_dethread *rngd = (struct rng_dethread *)rng;
 	pthread_mutex_lock(&rngd->lock);
@@ -58,7 +58,7 @@ dethread_dx(struct rng *rng, int x){
 }
 
 static uint32_t
-dethread_ndx(struct rng *rng, int n, int x){
+dethread_ndx(struct rngod *rng, int n, int x){
 	uint32_t rv;
 	struct rng_dethread *rngd = (struct rng_dethread *)rng;
 	pthread_mutex_lock(&rngd->lock);
@@ -68,7 +68,7 @@ dethread_ndx(struct rng *rng, int n, int x){
 }
 
 static uint32_t
-dethread_range(struct rng *rng, int min, int max){
+dethread_range(struct rngod *rng, int min, int max){
 	uint32_t rv;
 	struct rng_dethread *rngd = (struct rng_dethread *)rng;
 	pthread_mutex_lock(&rngd->lock);

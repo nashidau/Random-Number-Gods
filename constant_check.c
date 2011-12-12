@@ -6,9 +6,9 @@
 
 #include "dethread.h"
 #include "constant.h"
-#include "rng.h"
+#include "rngod.h"
 
-struct rng *cnst;
+struct rngod *cnst;
 
 static void constant_init(void) {
 	cnst = rngod_constant_add_default();

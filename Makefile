@@ -9,24 +9,24 @@ LDFLAGS+=`${PKGCONFIG} --libs ${PKGS}`
 LIB=librngod.so.0
 
 OBJS=			\
-	rng.o		\
+	rngod.o		\
 	constant.o	\
 	dethread.o	\
 	lcg.o
 
 LIBRNGH=		\
-	rng.h		\
-	lcg.h		\
+	constant.h	\
 	dethread.h	\
+	lcg.h		\
 	rng-private.h
 
 TESTS=				\
-	rng_check.o		\
+	rngod_check.o		\
 	constant_check.o	\
 	dethread_check.o
 
 .DEFAULT: ${LIB} check
-.PHONY : clean
+.PHONY : clean check
 .PRECIOUS: check
 
 ${LIB}: ${OBJS} check
@@ -37,6 +37,7 @@ rngod.a: ${OBJS}
 
 install: ${LIB} rngod.pc
 	mkdir -p /usr/local/include/rngod
+	cp rngod.h /usr/local/include
 	cp ${LIBRNGH} /usr/local/include/rngod
 	rm -f /usr/local/lib/librngod*
 	cp librngod.so.0 /usr/local/lib/
@@ -48,7 +49,7 @@ check: rngod.a ${TESTS}
 	${CC} ${CFLAGS} -o check ${TESTS} rngod.a ${LDFLAGS} -lcheck
 	./check
 
-${OBJS} : rng.h rng-private.h
+${OBJS} : rngod.h rng-private.h
 
 clean:
 	rm -f ${OBJS} ${LIB} rngod.a check
