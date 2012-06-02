@@ -1,3 +1,6 @@
+#ifndef RNGOD_H
+#define RNGOD_H TheOneTruePath
+
 #include <stdint.h>
 
 
@@ -11,3 +14,4 @@ struct rngod {
 
 int rng_free(struct rngod *);
 
+#endif /* RNGOD_H */
