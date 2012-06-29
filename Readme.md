@@ -52,6 +52,13 @@ the Constant god a great benefit.
 The constant god can be created in either a true (7) form, or alternatively
 created in the version of your choice.
 
+The God of Sequences
+--------------------
+
+An unusual deity, best know for his love of sequences.  Once a prayer has been
+sent to the god of sequences, he will send it back to the supplicant.  In some
+cases, he will continue to repeat the sequence once the scriptures are
+complete, in other cases, he is know to repeat the last item.
 
 Versions of the Scriptures
 ==========================
@@ -60,6 +67,7 @@ Versions of the Scriptures
  - 0.2: The Weaver: the coming of the dethread deity.
  - 0.3: Law and Order: The coming of the static good
  - 0.4: The True Names: The RNGods, not the rng.
+ - 0.5: The Repeated Scriptures: The god of sequences arrives
 
 The Great Beyond
 ================

@@ -12,18 +12,21 @@ OBJS=			\
 	rngod.o		\
 	constant.o	\
 	dethread.o	\
-	lcg.o
+	lcg.o		\
+	sequence.o
 
 LIBRNGH=		\
 	constant.h	\
 	dethread.h	\
 	lcg.h		\
+	sequence.h	\
 	rng-private.h
 
 TESTS=				\
 	rngod_check.o		\
 	constant_check.o	\
-	dethread_check.o
+	dethread_check.o	\
+	sequence_check.o
 
 .DEFAULT: ${LIB} check
 .PHONY : clean check

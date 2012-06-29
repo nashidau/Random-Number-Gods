@@ -10,6 +10,7 @@
 
 int dethread_check(Suite *s);
 int constant_check(Suite *s);
+int sequence_check(Suite *s);
 
 int
 main(int argc, char **argv) {
@@ -18,6 +19,7 @@ main(int argc, char **argv) {
 
 	constant_check(s);
         dethread_check(s);
+	sequence_check(s);
 
         SRunner *sr = srunner_create(s);
         srunner_run_all(sr, CK_NORMAL);
