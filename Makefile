@@ -13,14 +13,16 @@ OBJS=			\
 	constant.o	\
 	dethread.o	\
 	lcg.o		\
-	sequence.o
+	sequence.o	\
+	xorshift.o
 
 LIBRNGH=		\
 	constant.h	\
 	dethread.h	\
 	lcg.h		\
 	sequence.h	\
-	rng-private.h
+	rng-private.h	\
+	xorshift.h
 
 TESTS=				\
 	rngod_check.o		\
