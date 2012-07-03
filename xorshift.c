@@ -5,7 +5,7 @@
 
 #include <talloc.h>
 
-#include "sequence.h"
+#include "xorshift.h"
 #include "rngod.h"
 #include "rng-private.h"
 
