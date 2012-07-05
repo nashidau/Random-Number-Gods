@@ -26,16 +26,14 @@ START_TEST(test_randu_create) {
 } END_TEST
 
 START_TEST(test_randu_single_value) {
-	RESULT(2, randu);
+	RESULT(65539, randu);
 } END_TEST
 
 START_TEST(test_randu_many_values) {
-	RESULT(2, randu);
-	RESULT(7, randu);
-	RESULT(77, randu);
-	RESULT(77, randu);
-	RESULT(77, randu);
-	RESULT(77, randu);
+	RESULT(65539, randu);
+	RESULT(393225, randu);
+	RESULT(1769499, randu);
+	RESULT(7077969, randu);
 } END_TEST
 
 int
