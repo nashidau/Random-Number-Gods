@@ -37,13 +37,13 @@ TESTS=				\
 .PHONY : clean check
 .PRECIOUS: check
 
-${LIB}: ${OBJS} check
+${LIB}: ${OBJS}
 	${CC} -shared -Wl,-soname,$@ ${CFLAGS} -o $@ ${OBJS}
 
 rngod.a: ${OBJS}
 	ar rcs rngod.a ${OBJS}
 
-install: ${LIB} rngod.pc
+install: ${LIB} rngod.pc checkrun
 	mkdir -p /usr/local/include/rngod
 	cp rngod.h /usr/local/include
 	cp ${LIBRNGH} /usr/local/include/rngod
@@ -55,6 +55,8 @@ install: ${LIB} rngod.pc
 
 check: rngod.a ${TESTS}
 	${CC} ${CFLAGS} -o check ${TESTS} rngod.a ${LDFLAGS} -lcheck
+
+checkrun: check
 	./check
 
 ${OBJS} : rngod.h rng-private.h
