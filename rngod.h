@@ -1,8 +1,7 @@
 #ifndef RNGOD_H
-#define RNGOD_H TheOneTruePath
+#define RNGOD_H "TheOneTruePath"
 
 #include <stdint.h>
-
 
 struct rngod {
 	uint32_t magic;

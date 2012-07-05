@@ -3,9 +3,9 @@ Random Number Gods
 
 The Random Number Gods provides various random numbers to worthy supplicants.
 The pantheon of the Random Number Gods is strong, and flexible, and readily
-accepts new deities into it's ranks.
+accepts new deities into its ranks.
 
-The most revered and ancient books of the rngods is known as 'RNGOD 0.4'.
+The most revered and ancient books of the rngods is known as 'RNGOD 0.6.1'.
 
 Using the Random Number Gods
 ============================
@@ -60,6 +60,13 @@ sent to the god of sequences, he will send it back to the supplicant.  In some
 cases, he will continue to repeat the sequence once the scriptures are
 complete, in other cases, he is know to repeat the last item.
 
+XorShift
+--------
+
+A true random number diety, the XOR Shift comes from the gospels of George
+Marsaglia.  A diety who gives fast access to its prayers.  The scriptures
+presnted here use a 128 bits with a complete period.
+
 Versions of the Scriptures
 ==========================
 
@@ -68,6 +75,9 @@ Versions of the Scriptures
  - 0.3: Law and Order: The coming of the static good
  - 0.4: The True Names: The RNGods, not the rng.
  - 0.5: The Repeated Scriptures: The god of sequences arrives
+ - 0.6: The Passage of XOR: Xorshift storms into the pantheon
+ - 0.6.1: A dark god joins: RANDU tempts the weak of will, and poor of
+ knowledge.
 
 The Great Beyond
 ================
@@ -77,6 +87,8 @@ hope to discover them.
  
  - The shared gods.  Also known as the great '.so'.
  - The mersenne twister.  A great diety of vast power
+ - ISAAC
+ - Lagged Fibonacci generator
  - The Book of Travels.  Detailing how the wisdom of the Random Number Gods
  can be used in your life.
  - The Trials of the Random Number Gods.  The tests the RNGods must traverse.

@@ -13,6 +13,7 @@ OBJS=			\
 	constant.o	\
 	dethread.o	\
 	lcg.o		\
+	randu.o		\
 	sequence.o	\
 	xorshift.o
 
@@ -21,6 +22,7 @@ LIBRNGH=		\
 	dethread.h	\
 	lcg.h		\
 	sequence.h	\
+	randu.h		\
 	rng-private.h	\
 	xorshift.h
 
@@ -28,6 +30,7 @@ TESTS=				\
 	rngod_check.o		\
 	constant_check.o	\
 	dethread_check.o	\
+	randu_check.o		\
 	sequence_check.o
 
 .DEFAULT: ${LIB} check
