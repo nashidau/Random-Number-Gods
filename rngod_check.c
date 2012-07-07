@@ -11,8 +11,9 @@
 
 int dethread_check(Suite *s);
 int constant_check(Suite *s);
-int sequence_check(Suite *s);
 int randu_check(Suite *s);
+int sequence_check(Suite *s);
+int xorshift_check(Suite *s);
 
 struct tests {
 	const char *name;
@@ -20,8 +21,9 @@ struct tests {
 } tests[] = {
 	{ "dethread", dethread_check },
 	{ "constant", constant_check },
-	{ "sequence", sequence_check },
 	{ "randu", randu_check },
+	{ "sequence", sequence_check },
+	{ "xorshift", xorshift_check },
 };
 #define N_TESTS (sizeof(tests)/sizeof(tests[0]))
 

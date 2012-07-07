@@ -31,7 +31,8 @@ TESTS=				\
 	constant_check.o	\
 	dethread_check.o	\
 	randu_check.o		\
-	sequence_check.o
+	sequence_check.o	\
+	xorshift_check.o
 
 .DEFAULT: ${LIB} check
 .PHONY : clean check
