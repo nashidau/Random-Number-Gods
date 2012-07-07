@@ -29,7 +29,9 @@ rngod_dethread_add(struct rngod *rng) {
 	rngd->rng.range = dethread_range;
 
 	rngd->locked = rng;
-	/* FIXME: Take ownership of sub-rng */
+
+	/* Take ownership */
+	talloc_steal(rngd, rng);
 
 	pthread_mutex_init(&rngd->lock, NULL);
 
