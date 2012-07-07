@@ -48,6 +48,7 @@ rngod_sequence_add(int nitems, const int *items) {
 	default_init(&rngs->rng);
 	rngs->loop = true;
 	rngs->cur = 0;
+	rngs->items = NULL;
 
 	rngod_sequence_sequence_set(&rngs->rng, nitems, items);
 	return &rngs->rng;

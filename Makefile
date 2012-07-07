@@ -13,6 +13,7 @@ OBJS=			\
 	constant.o	\
 	dethread.o	\
 	lcg.o		\
+	randu.o		\
 	sequence.o	\
 	xorshift.o
 
@@ -21,6 +22,7 @@ LIBRNGH=		\
 	dethread.h	\
 	lcg.h		\
 	sequence.h	\
+	randu.h		\
 	rng-private.h	\
 	xorshift.h
 
@@ -28,19 +30,20 @@ TESTS=				\
 	rngod_check.o		\
 	constant_check.o	\
 	dethread_check.o	\
+	randu_check.o		\
 	sequence_check.o
 
 .DEFAULT: ${LIB} check
 .PHONY : clean check
 .PRECIOUS: check
 
-${LIB}: ${OBJS} check
+${LIB}: ${OBJS}
 	${CC} -shared -Wl,-soname,$@ ${CFLAGS} -o $@ ${OBJS}
 
 rngod.a: ${OBJS}
 	ar rcs rngod.a ${OBJS}
 
-install: ${LIB} rngod.pc
+install: ${LIB} rngod.pc checkrun
 	mkdir -p /usr/local/include/rngod
 	cp rngod.h /usr/local/include
 	cp ${LIBRNGH} /usr/local/include/rngod
@@ -52,6 +55,8 @@ install: ${LIB} rngod.pc
 
 check: rngod.a ${TESTS}
 	${CC} ${CFLAGS} -o check ${TESTS} rngod.a ${LDFLAGS} -lcheck
+
+checkrun: check
 	./check
 
 ${OBJS} : rngod.h rng-private.h
