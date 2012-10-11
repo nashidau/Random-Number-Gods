@@ -39,7 +39,7 @@ rngod_constant_add(uint32_t value){
 
 static uint32_t
 constant_rand(struct rngod *rng) {
-	struct rng_constant *rngc = (struct rng_constant *)rng;
+	struct rng_constant *rngc = talloc_get_type(rng, struct rng_constant);
 	return rngc->value;
 }
 
@@ -50,7 +50,7 @@ constant_dx(struct rngod *rng, int x) {
 
 static uint32_t
 constant_range(struct rngod *rng, int min, int max) {
-	struct rng_constant *rngc = (struct rng_constant *)rng;
+	struct rng_constant *rngc = talloc_get_type(rng, struct rng_constant);
 	if (rngc->value > max)
 		return max;
 	else if (rngc->value < min)
