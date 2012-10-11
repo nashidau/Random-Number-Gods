@@ -37,7 +37,6 @@ rngod_constant_add(uint32_t value){
 	return (struct rngod *)rngc;
 }
 
-
 static uint32_t
 constant_rand(struct rngod *rng) {
 	struct rng_constant *rngc = (struct rng_constant *)rng;
@@ -46,9 +45,7 @@ constant_rand(struct rngod *rng) {
 
 static uint32_t
 constant_dx(struct rngod *rng, int x) {
-	struct rng_constant *rngc = (struct rng_constant *)rng;
-	// FIXME: Ignores 'X'
-	return rngc->value;
+	return constant_range(rng, 1, x);
 }
 
 static uint32_t
