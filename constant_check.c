@@ -1,4 +1,8 @@
-
+/**
+ * Todo: Test ndx.
+ * 	- 5d10 -> 35
+ * 	- 10d5 -> 50
+ */
 
 
 #include <stdio.h>
