@@ -5,7 +5,8 @@
 #include "rng-private.h"
 
 
-int rng_free(struct rngod *rng){
+int
+rng_free(struct rngod *rng){
 	return talloc_free(rng);
 }
 
@@ -41,7 +42,6 @@ default_range(struct rngod *rng, int min, int max){
 int
 default_init(struct rngod *rng){
 	if (!rng) return -1;
-	// FIXME: check range is defined?
 	rng->dx = default_dx;
 	rng->ndx = default_ndx;
 	rng->range = default_range;
