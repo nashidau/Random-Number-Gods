@@ -44,7 +44,7 @@ lcg_add(uint32_t seed){
 
 static uint32_t
 lcg_rand(struct rngod *rng) {
-	struct rng_lcg *rngl = (struct rng_lcg *)rng;
+	struct rng_lcg *rngl = talloc_get_type(rng, struct rng_lcg);
 
 	rngl->seed = ((uint64_t)rngl->seed * LCG_A + LCG_C);
 	return rngl->seed;

@@ -21,7 +21,7 @@ struct rng_seq {
 
 static uint32_t
 rngod_sequence_method_rand(struct rngod *rng) {
-	struct rng_seq *rngs = (struct rng_seq *)rng;
+	struct rng_seq *rngs = talloc_get_type(rng, struct rng_seq);
 
 	if (rngs->cur < rngs->nitems) {
 		return rngs->items[rngs->cur ++];
@@ -57,7 +57,7 @@ rngod_sequence_add(int nitems, const int *items) {
 
 int
 rngod_sequence_sequence_set(struct rngod *rng, int nitems, const int *items) {
-	struct rng_seq *rngs = (struct rng_seq *)rng;
+	struct rng_seq *rngs = talloc_get_type(rng, struct rng_seq);
 	if (rngs->rng.rand != rngod_sequence_method_rand) {
 		return -1;
 	}
@@ -81,7 +81,7 @@ rngod_sequence_sequence_set(struct rngod *rng, int nitems, const int *items) {
  */
 int
 rngod_sequence_loop_set(struct rngod *rng, bool loop) {
-	struct rng_seq *rngs = (struct rng_seq *)rng;
+	struct rng_seq *rngs = talloc_get_type(rng, struct rng_seq);
 	if (rngs->rng.rand != rngod_sequence_method_rand) {
 		return -1;
 	}

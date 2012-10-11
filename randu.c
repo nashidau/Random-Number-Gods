@@ -17,8 +17,7 @@ struct rng_randu {
 
 static uint32_t
 rngod_randu_method_rand(struct rngod *rng) {
-	// FIXME: use talloc
-	struct rng_randu *rngr = (struct rng_randu *)rng;
+	struct rng_randu *rngr = talloc_get_type(rng, struct rng_randu);
 
 	rngr->val = ((rngr->val << 16) + (rngr->val << 1) + rngr->val) &
 		0x7fffffff;

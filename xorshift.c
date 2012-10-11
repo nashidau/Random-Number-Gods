@@ -24,8 +24,9 @@ struct rng_xor {
 
 static uint32_t
 rngod_xorshift_method_rand(struct rngod *rng) {
-	// FIXME: use talloc
-	struct rng_xor *rngx = (struct rng_xor *)rng;
+	struct rng_xor *rngx = talloc_get_type(rng, struct rng_xor);
+	// FIXME: Error reporting policy/mechanism
+	if (!rngx) return -1;
 
 	uint32_t tmp;
 
