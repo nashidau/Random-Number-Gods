@@ -35,7 +35,7 @@ TESTS=				\
 	xorshift_check.o
 
 .DEFAULT: ${LIB} check
-.PHONY : clean check
+.PHONY : clean check fixme
 .PRECIOUS: check
 
 ${LIB}: ${OBJS}
@@ -59,6 +59,9 @@ check: rngod.a ${TESTS}
 
 checkrun: check
 	./check
+
+fixme:
+	egrep -i 'FIXME|XXX|TODO' *.[ch]
 
 ${OBJS} : rngod.h rng-private.h
 
