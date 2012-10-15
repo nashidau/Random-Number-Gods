@@ -1,3 +1,7 @@
+/**
+ * Todo: test this
+ */
+
 #include <stdlib.h>
 #include <sys/types.h>
 #include <time.h>
@@ -31,7 +35,6 @@ lcg_add(uint32_t seed, uint32_t a, uint32_t c){
 
 	rngl = talloc(NULL, struct rng_lcg);
 
-	/** FIXME: Magic */
 	rngl->seed = seed;
 	rngl->a = a;
 	rngl->c = c;
