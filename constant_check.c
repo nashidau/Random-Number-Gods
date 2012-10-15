@@ -1,10 +1,3 @@
-/**
- * Todo: Test ndx.
- * 	- 5d10 -> 35
- * 	- 10d5 -> 50
- */
-
-
 #include <stdio.h>
 #include <check.h>
 
@@ -51,6 +44,14 @@ START_TEST(test_constant_range_returns_max) {
 	ck_assert_int_eq(5, cnst->range(cnst, 3, 5));
 } END_TEST
 
+START_TEST(test_constant_ndx) {
+	ck_assert_int_eq(35, cnst->ndx(cnst, 5, 10));
+} END_TEST
+
+START_TEST(test_constant_ndx_overflow) {
+	ck_assert_int_eq(50, cnst->ndx(cnst, 10, 5));
+} END_TEST
+
 int
 constant_check(Suite *s) {
         TCase *tc_cnst = tcase_create("RNG Constant");
@@ -65,6 +66,8 @@ constant_check(Suite *s) {
 	tcase_add_test(tc_cnst, test_constant_range_returns_value);
 	tcase_add_test(tc_cnst, test_constant_range_returns_min);
 	tcase_add_test(tc_cnst, test_constant_range_returns_max);
+	tcase_add_test(tc_cnst, test_constant_ndx);
+	tcase_add_test(tc_cnst, test_constant_ndx_overflow);
 
 	return 0;
 }
