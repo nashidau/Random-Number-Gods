@@ -25,8 +25,12 @@ static uint32_t lcg_rand(struct rngod *rng);
 
 struct rngod *
 lcg_add_default(void){
-	return lcg_add(time(NULL) ^ (getpid() << 1),
-			RNGOD_LCG_DEFAULT_A, RNGOD_LCG_DEFAULT_C);
+	return lcg_add_seed(time(NULL) ^ (getpid() << 1));
+}
+
+struct rngod *
+lcg_add_seed(uint32_t seed) {
+	return lcg_add(seed, RNGOD_LCG_DEFAULT_A, RNGOD_LCG_DEFAULT_C);
 }
 
 struct rngod *
