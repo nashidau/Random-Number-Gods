@@ -115,6 +115,7 @@ sequence_check(Suite *s) {
 	tcase_add_test(tc_seq, test_seq_loops);
 	tcase_add_test(tc_seq, test_seq_repeats_last);
 	tcase_add_test(tc_seq, test_seq_change_updates);
+	tcase_add_test(tc_seq, test_seq_change_resets_pos);
 	tcase_add_test(tc_seq, test_seq_empty_fails);
 	tcase_add_test(tc_seq, test_seq_single_item);
 
