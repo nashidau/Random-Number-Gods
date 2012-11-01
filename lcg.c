@@ -24,17 +24,17 @@ struct rng_lcg {
 static uint32_t lcg_rand(struct rngod *rng);
 
 struct rngod *
-lcg_add_default(void){
-	return lcg_add_seed(time(NULL) ^ (getpid() << 1));
+rngod_lcg_add_default(void){
+	return rngod_lcg_add_seed(time(NULL) ^ (getpid() << 1));
 }
 
 struct rngod *
-lcg_add_seed(uint32_t seed) {
-	return lcg_add(seed, RNGOD_LCG_DEFAULT_A, RNGOD_LCG_DEFAULT_C);
+rngod_lcg_add_seed(uint32_t seed) {
+	return rngod_lcg_add(seed, RNGOD_LCG_DEFAULT_A, RNGOD_LCG_DEFAULT_C);
 }
 
 struct rngod *
-lcg_add(uint32_t seed, uint32_t a, uint32_t c){
+rngod_lcg_add(uint32_t seed, uint32_t a, uint32_t c){
 	struct rng_lcg *rngl;
 
 	rngl = talloc(NULL, struct rng_lcg);
