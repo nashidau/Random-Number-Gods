@@ -22,6 +22,11 @@ static void sequence_shutdown(void) {
 		ck_assert_int_eq(expected_, res_);	\
 	} while (0)
 
+#define RANGE_RESULT(expected_, seq_, min_, max_)	\
+	do {						\
+		int res_ = seq_->range(seq_, min_, max_);	\
+		ck_assert_int_eq(expected_, res_);	\
+	} while (0)
 
 START_TEST(test_seq_create) {
 	ck_assert(seq != NULL);
@@ -102,6 +107,25 @@ START_TEST(test_seq_single_item) {
 	RESULT(42, seq);
 } END_TEST
 
+START_TEST(test_seq_range_sane) {
+	int values[] = { 1, 1, 5, 10 };
+	rngod_sequence_sequence_set(seq, 4, values);
+	RANGE_RESULT(1, seq, 1, 10);
+	RANGE_RESULT(1, seq, 0, 3);
+	RANGE_RESULT(5, seq, 1, 5);
+	RANGE_RESULT(10, seq, 1, 20);
+} END_TEST
+
+START_TEST(test_seq_range_outside) {
+	int values[] = { 10 };
+	rngod_sequence_sequence_set(seq, 1, values);
+	RANGE_RESULT(1, seq, 1, 5);
+	RANGE_RESULT(3, seq, 1, 4);
+	RANGE_RESULT(30, seq, 20, 30);
+	RANGE_RESULT(20, seq, 20, 29);
+	RANGE_RESULT(15, seq, 13, 20);
+} END_TEST
+
 int
 sequence_check(Suite *s) {
 	TCase *tc_seq = tcase_create("RNG Sequence");
@@ -118,6 +142,8 @@ sequence_check(Suite *s) {
 	tcase_add_test(tc_seq, test_seq_change_resets_pos);
 	tcase_add_test(tc_seq, test_seq_empty_fails);
 	tcase_add_test(tc_seq, test_seq_single_item);
+	tcase_add_test(tc_seq, test_seq_range_sane);
+	tcase_add_test(tc_seq, test_seq_range_outside);
 
 	return 0;
 }

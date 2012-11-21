@@ -35,6 +35,19 @@ rngod_sequence_method_rand(struct rngod *rng) {
 	return rngs->items[rngs->nitems - 1];
 }
 
+static uint32_t
+rngod_sequence_method_range(struct rngod *rng, int min, int max) {
+	struct rng_seq *rngs = talloc_get_type(rng, struct rng_seq);
+	int val = rng->rand(rng);
+	if (val >= min && val <= max) {
+		return val;
+	}
+	int range = max - min + 1;
+	val = val % range;
+	val += min;
+	return val;
+}
+
 struct rngod *
 rngod_sequence_add(int nitems, const int *items) {
 	struct rng_seq *rngs;
@@ -46,6 +59,7 @@ rngod_sequence_add(int nitems, const int *items) {
 
 	rngs->rng.rand = rngod_sequence_method_rand;
 	default_init(&rngs->rng);
+	rngs->rng.range = rngod_sequence_method_range;
 	rngs->loop = true;
 	rngs->cur = 0;
 	rngs->nitems = 0;
