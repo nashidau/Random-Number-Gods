@@ -1,3 +1,7 @@
+/**
+ * FIXME: Check that ndx behaves as expected, and adjust if necessary
+ */
+
 #include <stdlib.h>
 #include <sys/types.h>
 #include <time.h>
@@ -37,7 +41,7 @@ rngod_sequence_method_rand(struct rngod *rng) {
 
 static uint32_t
 rngod_sequence_method_range(struct rngod *rng, int min, int max) {
-	struct rng_seq *rngs = talloc_get_type(rng, struct rng_seq);
+	if (!rng) return 0;
 	int val = rng->rand(rng);
 	if (val >= min && val <= max) {
 		return val;
