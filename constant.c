@@ -37,6 +37,15 @@ rngod_constant_add(uint32_t value){
 	return (struct rngod *)rngc;
 }
 
+int
+rngod_constant_constant_set(struct rngod *rng, uint32_t seed) {
+	struct rng_constant *rngc = talloc_get_type(rng, struct rng_constant);
+	if (!rngc) return -1;
+
+	rngc->value = seed;
+	return 0;
+}
+
 static uint32_t
 constant_rand(struct rngod *rng) {
 	struct rng_constant *rngc = talloc_get_type(rng, struct rng_constant);

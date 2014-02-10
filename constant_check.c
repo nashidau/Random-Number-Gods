@@ -52,6 +52,14 @@ START_TEST(test_constant_ndx_overflow) {
 	ck_assert_int_eq(50, cnst->ndx(cnst, 10, 5));
 } END_TEST
 
+START_TEST(test_constant_change_value) {
+	ck_assert_int_eq(7, cnst->rand(cnst));
+	rngod_constant_constant_set(cnst, 99);
+	ck_assert_int_eq(99, cnst->rand(cnst));
+} END_TEST
+
+
+
 int
 constant_check(Suite *s) {
         TCase *tc_cnst = tcase_create("RNG Constant");
@@ -68,6 +76,8 @@ constant_check(Suite *s) {
 	tcase_add_test(tc_cnst, test_constant_range_returns_max);
 	tcase_add_test(tc_cnst, test_constant_ndx);
 	tcase_add_test(tc_cnst, test_constant_ndx_overflow);
+
+	tcase_add_test(tc_cnst, test_constant_change_value);
 
 	return 0;
 }
