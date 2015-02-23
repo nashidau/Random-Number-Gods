@@ -1,6 +1,10 @@
 PKGS="talloc"
 PKGCONFIG=pkg-config
 
+ifndef CFLAGS
+CFLAGS=-Wall -O2
+endif
+
 CFLAGS+=`${PKGCONFIG} --cflags ${PKGS}` -fPIC
 LDFLAGS+=`${PKGCONFIG} --libs ${PKGS}` -lm -lpthread -lrt
 
