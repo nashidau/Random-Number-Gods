@@ -34,7 +34,7 @@ default_ndx(struct rngod *rng, int n, int x){
 
 uint32_t
 default_range(struct rngod *rng, int min, int max){
-        int range = max - min;
+        int range = max - min  + 1;
         return min + rng->dx(rng, range) - 1;
 
 }
