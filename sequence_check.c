@@ -128,7 +128,7 @@ START_TEST(test_seq_range_outside) {
 
 START_TEST(test_seq_range_all) {
 	int values[] = { 0, 1, 2, 3, 4, 5, 6, 7 };
-	rngod_sequence_sequence_set(seq, 1, values);
+	rngod_sequence_sequence_set(seq, 8, values);
 	RANGE_RESULT(0, seq, 0, 3);
 	RANGE_RESULT(1, seq, 0, 3);
 	RANGE_RESULT(2, seq, 0, 3);
