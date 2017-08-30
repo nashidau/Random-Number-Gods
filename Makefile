@@ -1,4 +1,4 @@
-PKGS="talloc"
+PKGS="talloc check"
 PKGCONFIG=pkg-config
 
 ifndef CFLAGS
@@ -6,7 +6,7 @@ CFLAGS=-Wall -O2
 endif
 
 CFLAGS+=`${PKGCONFIG} --cflags ${PKGS}` -fPIC
-LDFLAGS+=`${PKGCONFIG} --libs ${PKGS}` -lm -lpthread -lrt
+LDFLAGS+=`${PKGCONFIG} --libs ${PKGS}`
 
 ####
 
@@ -61,7 +61,7 @@ install: ${LIB} rngod.pc checkrun
 check: rngod.a ${TESTS}
 	${CC} ${CFLAGS} -o check ${TESTS} rngod.a ${LDFLAGS} -lcheck
 
-checkrun: check
+test: check
 	./check
 
 fixme:
