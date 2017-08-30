@@ -7,6 +7,8 @@ accepts new deities into its ranks.
 
 The most revered and ancient books of the rngods is known as 'RNGOD 0.6.1'.
 
+[![Build Status](https://travis-ci.org/nashidau/Random-Number-Gods.svg?branch=master)](https://travis-ci.org/nashidau/Random-Number-Gods)
+
 Using the Random Number Gods
 ============================
 
