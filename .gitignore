@@ -1,6 +1,10 @@
 .*.swp
 rngod.a
 librngod.so*
+librngods.a
+CMakeCache.txt
+CMakeFiles
+cmake_install.cmake
 *.o
 check
 tags
