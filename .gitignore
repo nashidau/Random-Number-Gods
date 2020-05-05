@@ -5,6 +5,7 @@ librngods.a
 CMakeCache.txt
 CMakeFiles
 cmake_install.cmake
+Makefile
 *.o
 check
 tags
