@@ -6,5 +6,8 @@ compiler:
  - clang
  - gcc
 script:
- - cmake . && make && make install
+ - cmake .
+ - make
+ - make check
+ - ./check
 
