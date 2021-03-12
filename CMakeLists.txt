@@ -5,7 +5,7 @@ cmake_minimum_required (VERSION 3.0.0)
 project (RandomNumberGods LANGUAGES C)
 
 include(FindPkgConfig)
-pkg_check_modules(REQUIRED TALLOC talloc)
+pkg_check_modules(TALLOC REQUIRED talloc)
 pkg_check_modules(CHECK check)
 
 include_directories(SYSTEM ${TALLOC_INCLUDEDIR} ${CHECK_INCLUDEDIR})
