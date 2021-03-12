@@ -1,17 +1,14 @@
 os:
   - linux
 language: c
-before_install:
-- sudo apt-get update -qq
-- sudo apt-get install -qq check libtalloc-dev
 compiler:
  - clang
  - gcc
 addons:
   apt:
     packages:
-      -check
-      -libtalloc-dev
+      check
+      libtalloc-dev
 script:
  - cmake .
  - make
