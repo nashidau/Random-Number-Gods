@@ -9,6 +9,10 @@ addons:
     packages:
       check
       libtalloc-dev
+  brew:
+    packages:
+      check
+      talloc
 script:
  - cmake .
  - make
