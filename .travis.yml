@@ -10,7 +10,7 @@ addons:
     packages:
       check
       libtalloc-dev
-  brew:
+  homebrew:
     packages:
       check
       talloc
