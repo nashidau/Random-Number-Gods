@@ -1,3 +1,6 @@
+arch:
+  - amd64
+  - arm64
 os:
   - linux
   - osx
@@ -12,8 +15,9 @@ addons:
       libtalloc-dev
   homebrew:
     packages:
-      check
-      talloc
+    - check
+    - talloc
+    update: true
 script:
  - cmake .
  - make
