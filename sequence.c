@@ -3,6 +3,7 @@
  */
 
 #include <stdlib.h>
+#include <string.h>
 #include <sys/types.h>
 #include <time.h>
 #include <unistd.h>
@@ -16,14 +17,14 @@
 struct rng_seq {
 	struct rngod rng;
 
-	int cur;
+	size_t cur;
 	bool loop;
 
-	int nitems;
-	int *items;
+	size_t nitems;
+	uint64_t *items;
 };
 
-static uint32_t
+static uint64_t
 rngod_sequence_method_rand(struct rngod *rng) {
 	struct rng_seq *rngs = talloc_get_type(rng, struct rng_seq);
 
@@ -39,10 +40,10 @@ rngod_sequence_method_rand(struct rngod *rng) {
 	return rngs->items[rngs->nitems - 1];
 }
 
-static uint32_t
-rngod_sequence_method_range(struct rngod *rng, int min, int max) {
+static uint64_t
+rngod_sequence_method_range(struct rngod *rng, uint64_t min, uint64_t max) {
 	if (!rng) return 0;
-	int val = rng->rand(rng);
+	uint64_t val = rng->rand(rng);
 	if (val >= min && val <= max) {
 		return val;
 	}
@@ -53,7 +54,7 @@ rngod_sequence_method_range(struct rngod *rng, int min, int max) {
 }
 
 struct rngod *
-rngod_sequence_add(int nitems, const int *items) {
+rngod_sequence_add(size_t nitems, const uint64_t *items) {
 	struct rng_seq *rngs;
 
 	if (nitems < 1 || items == NULL) return NULL;
@@ -69,12 +70,16 @@ rngod_sequence_add(int nitems, const int *items) {
 	rngs->nitems = 0;
 	rngs->items = NULL;
 
-	rngod_sequence_sequence_set(&rngs->rng, nitems, items);
+	int rv = rngod_sequence_sequence_set(&rngs->rng, nitems, items);
+	if (rv != 0) {
+		talloc_free(rngs);
+		return NULL;
+	}
 	return &rngs->rng;
 }
 
 int
-rngod_sequence_sequence_set(struct rngod *rng, int nitems, const int *items) {
+rngod_sequence_sequence_set(struct rngod *rng, size_t nitems, const uint64_t *items) {
 	struct rng_seq *rngs = talloc_get_type(rng, struct rng_seq);
 	if (rngs->rng.rand != rngod_sequence_method_rand) {
 		return -1;
@@ -83,11 +88,12 @@ rngod_sequence_sequence_set(struct rngod *rng, int nitems, const int *items) {
 
 	if (rngs->items) talloc_free(rngs->items);
 
-	rngs->items = talloc_memdup(rngs, items, nitems * sizeof(int));
+	rngs->items = talloc_array(rngs, uint64_t, nitems);
 	if (rngs->items == NULL) {
 		rngs->nitems = 0;
 		return -1;
 	}
+	memcpy(rngs->items, items, nitems * sizeof(uint64_t));
 	rngs->nitems = nitems;
 	rngs->cur = 0;
 

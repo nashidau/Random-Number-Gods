@@ -4,11 +4,11 @@
 #include <stdint.h>
 
 struct rngod {
-	uint32_t magic;
-	uint32_t (*rand)(struct rngod*);
-	uint32_t (*dx)(struct rngod *, int x);
-	uint32_t (*ndx)(struct rngod *, int n, int x);
-	uint32_t (*range)(struct rngod *, int min, int max);
+	uint64_t magic;
+	uint64_t (*rand)(struct rngod*);
+	uint64_t (*range)(struct rngod *, uint64_t min, uint64_t max);
+	uint32_t (*dx)(struct rngod *, uint32_t x);
+	uint32_t (*ndx)(struct rngod *, uint32_t n, uint32_t x);
 };
 
 int rng_free(struct rngod *);

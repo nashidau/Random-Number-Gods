@@ -12,10 +12,10 @@ struct rng_dethread {
 	struct rngod *locked;
 };
 
-static uint32_t dethread_rand(struct rngod*);
-static uint32_t dethread_dx(struct rngod *, int x);
-static uint32_t dethread_ndx(struct rngod *, int n, int x);
-static uint32_t dethread_range(struct rngod *, int min, int max);
+static uint64_t dethread_rand(struct rngod*);
+static uint64_t dethread_range(struct rngod *, uint64_t min, uint64_t max);
+static uint32_t dethread_dx(struct rngod *, uint32_t x);
+static uint32_t dethread_ndx(struct rngod *, uint32_t n, uint32_t x);
 
 struct rngod *
 rngod_dethread_add(struct rngod *rng) {
@@ -39,9 +39,9 @@ rngod_dethread_add(struct rngod *rng) {
 }
 
 
-static uint32_t
+static uint64_t
 dethread_rand(struct rngod *rng){
-	uint32_t rv;
+	uint64_t rv;
 	struct rng_dethread *rngd = (struct rng_dethread *)rng;
 	pthread_mutex_lock(&rngd->lock);
 	rv = rngd->locked->rand(rngd->locked);
@@ -49,8 +49,18 @@ dethread_rand(struct rngod *rng){
 	return rv;
 }
 
+static uint64_t
+dethread_range(struct rngod *rng, uint64_t min, uint64_t max){
+	uint32_t rv;
+	struct rng_dethread *rngd = (struct rng_dethread *)rng;
+	pthread_mutex_lock(&rngd->lock);
+	rv = rngd->locked->range(rngd->locked, min, max);
+	pthread_mutex_unlock(&rngd->lock);
+	return rv;
+}
+
 static uint32_t
-dethread_dx(struct rngod *rng, int x){
+dethread_dx(struct rngod *rng, uint32_t x){
 	uint32_t rv;
 	struct rng_dethread *rngd = (struct rng_dethread *)rng;
 	pthread_mutex_lock(&rngd->lock);
@@ -60,21 +70,11 @@ dethread_dx(struct rngod *rng, int x){
 }
 
 static uint32_t
-dethread_ndx(struct rngod *rng, int n, int x){
+dethread_ndx(struct rngod *rng, uint32_t n, uint32_t x){
 	uint32_t rv;
 	struct rng_dethread *rngd = (struct rng_dethread *)rng;
 	pthread_mutex_lock(&rngd->lock);
 	rv = rngd->locked->ndx(rngd->locked, n, x);
-	pthread_mutex_unlock(&rngd->lock);
-	return rv;
-}
-
-static uint32_t
-dethread_range(struct rngod *rng, int min, int max){
-	uint32_t rv;
-	struct rng_dethread *rngd = (struct rng_dethread *)rng;
-	pthread_mutex_lock(&rngd->lock);
-	rv = rngd->locked->range(rngd->locked, min, max);
 	pthread_mutex_unlock(&rngd->lock);
 	return rv;
 }

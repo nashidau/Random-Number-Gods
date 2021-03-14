@@ -21,7 +21,7 @@ struct rng_lcg {
 	uint32_t a, c;
 };
 
-static uint32_t lcg_rand(struct rngod *rng);
+static uint64_t lcg_rand(struct rngod *rng);
 
 struct rngod *
 rngod_lcg_add_default(void){
@@ -47,7 +47,7 @@ rngod_lcg_add(uint32_t seed, uint32_t a, uint32_t c){
 	return (struct rngod *)rngl;
 }
 
-static uint32_t
+static uint64_t
 lcg_rand(struct rngod *rng) {
 	struct rng_lcg *rngl = talloc_get_type(rng, struct rng_lcg);
 

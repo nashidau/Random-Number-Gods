@@ -3,6 +3,6 @@
 
 struct rngod;
 
-struct rngod *rngod_sequence_add(int nitems, const int *items);
-int rngod_sequence_sequence_set(struct rngod *, int nitems, const int *items);
+struct rngod *rngod_sequence_add(size_t nitems, const uint64_t *items);
+int rngod_sequence_sequence_set(struct rngod *, size_t nitems, const uint64_t *items);
 int rngod_sequence_loop_set(struct rngod *, bool loop);

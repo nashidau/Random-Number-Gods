@@ -22,7 +22,7 @@ struct rng_xor {
 	uint32_t x, y, z, w;
 };
 
-static uint32_t
+static uint64_t
 rngod_xorshift_method_rand(struct rngod *rng) {
 	struct rng_xor *rngx = talloc_get_type(rng, struct rng_xor);
 	// FIXME: Error reporting policy/mechanism

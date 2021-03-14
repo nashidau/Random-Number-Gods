@@ -31,7 +31,6 @@ int
 main(int argc, char **argv) {
 	bool verbose = false;
 	int nfail;
-	int i, j;
 	Suite *s = suite_create("RNGods");
 
 	if (argv[1] && (!strcmp(argv[1], "-h") || !strcmp(argv[1], "help"))){
@@ -39,18 +38,19 @@ main(int argc, char **argv) {
 		printf("No arguments to run all tests\n");
 		printf("Otherwise specify tests to run\n");
 		printf("Available tests:\n");
-		for (i = 0 ; i < N_TESTS ; i ++){
+		for (size_t i = 0 ; i < N_TESTS ; i ++){
 			printf("\t%s\n", tests[i].name);
 		}
 		exit(0);
 	}
 		
-	if (!argv[1]) {
-		for (i = 0 ; i < N_TESTS ; i ++){
+	if (argv[1] == NULL) {
+		for (size_t i = 0 ; i < N_TESTS ; i ++){
 			tests[i].add(s);
 		}
 	} else {
-		for (i = 1 ; argv[i] ; i ++){
+		for (int i = 1 ; i <= argc ; i ++){
+			size_t j;
 			for (j = 0 ; j < N_TESTS ; j ++) {
 				if (strcmp(tests[j].name, argv[i]))
 					continue;

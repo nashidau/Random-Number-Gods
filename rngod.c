@@ -11,16 +11,16 @@ rng_free(struct rngod *rng){
 }
 
 uint32_t
-default_dx(struct rngod *rng, int x){
+default_dx(struct rngod *rng, uint32_t x){
        if (x < 1) x = 1;
        return rng->rand(rng) % x + 1;
 }
 
 
 uint32_t
-default_ndx(struct rngod *rng, int n, int x){
-	     int i;
-        int total;
+default_ndx(struct rngod *rng, uint32_t n, uint32_t x){
+	uint32_t i;
+        uint32_t total;
 
         if (n == 0) return 0;
         if (x == 0) return 0;
@@ -32,11 +32,10 @@ default_ndx(struct rngod *rng, int n, int x){
 
 }
 
-uint32_t
-default_range(struct rngod *rng, int min, int max){
+uint64_t
+default_range(struct rngod *rng, uint64_t min, uint64_t max){
         int range = max - min  + 1;
         return min + rng->dx(rng, range) - 1;
-
 }
 
 int

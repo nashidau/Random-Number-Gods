@@ -15,7 +15,7 @@ struct rng_randu {
 	uint32_t val;
 };
 
-static uint32_t
+static uint64_t
 rngod_randu_method_rand(struct rngod *rng) {
 	struct rng_randu *rngr = talloc_get_type(rng, struct rng_randu);
 

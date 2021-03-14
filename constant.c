@@ -11,12 +11,12 @@
 
 struct rng_constant {
 	struct rngod rng;
-	uint32_t value;
+	uint64_t value;
 };
 
-static uint32_t constant_rand(struct rngod *rng);
-static uint32_t constant_dx(struct rngod *rng, int x);
-static uint32_t constant_range(struct rngod *rng, int min, int max);
+static uint64_t constant_rand(struct rngod *rng);
+static uint32_t constant_dx(struct rngod *rng, uint32_t x);
+static uint64_t constant_range(struct rngod *rng, uint64_t min, uint64_t max);
 
 struct rngod *
 rngod_constant_add_default(void){
@@ -24,7 +24,7 @@ rngod_constant_add_default(void){
 }
 
 struct rngod *
-rngod_constant_add(uint32_t value){
+rngod_constant_add(uint64_t value){
 	struct rng_constant *rngc;
 
 	rngc = talloc(NULL, struct rng_constant);
@@ -38,7 +38,7 @@ rngod_constant_add(uint32_t value){
 }
 
 int
-rngod_constant_constant_set(struct rngod *rng, uint32_t seed) {
+rngod_constant_constant_set(struct rngod *rng, uint64_t seed) {
 	struct rng_constant *rngc = talloc_get_type(rng, struct rng_constant);
 	if (!rngc) return -1;
 
@@ -46,19 +46,19 @@ rngod_constant_constant_set(struct rngod *rng, uint32_t seed) {
 	return 0;
 }
 
-static uint32_t
+static uint64_t
 constant_rand(struct rngod *rng) {
 	struct rng_constant *rngc = talloc_get_type(rng, struct rng_constant);
 	return rngc->value;
 }
 
 static uint32_t
-constant_dx(struct rngod *rng, int x) {
+constant_dx(struct rngod *rng, uint32_t x) {
 	return constant_range(rng, 1, x);
 }
 
-static uint32_t
-constant_range(struct rngod *rng, int min, int max) {
+static uint64_t
+constant_range(struct rngod *rng, uint64_t min, uint64_t max) {
 	struct rng_constant *rngc = talloc_get_type(rng, struct rng_constant);
 	if (rngc->value > max)
 		return max;
