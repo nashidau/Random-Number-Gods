@@ -8,6 +8,8 @@ include(FindPkgConfig)
 pkg_check_modules(TALLOC REQUIRED talloc)
 pkg_check_modules(CHECK check)
 
+add_compile_options(-Wall -Wextra -Werror)
+
 include_directories(SYSTEM ${TALLOC_INCLUDEDIR} ${CHECK_INCLUDEDIR})
 
 add_library(rngods constant.c dethread.c lcg.c randu.c rngod.c sequence.c xorshift.c)
